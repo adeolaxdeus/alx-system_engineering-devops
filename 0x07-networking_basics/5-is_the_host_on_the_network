@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# ping the ip address passed as parameter to the file 5x
+
+ping -c 5 $1
