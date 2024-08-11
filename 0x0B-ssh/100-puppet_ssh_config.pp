@@ -1,4 +1,4 @@
-config SSH config file for automated passwordless connection using Puppet
+# config SSH config file for automated passwordless connection using Puppet
 
 include stdlib
 file_line { 'Turn off passwd auth':
