@@ -1,13 +1,14 @@
-# manifest to make changes to the configuration file
+config SSH config file for automated passwordless connection using Puppet
 
-file_line { 'Declare identity file':
+include stdlib
+file_line { 'Turn off passwd auth':
   path    => '/etc/ssh/ssh_config',
-  line    => 'IdentifyFile ~/.ssh/school',
+  line    => '    PasswordAuthentication no',
   replace => true,
 }
 
-file_line {'Turn off passwd Auth':
+file_line { 'Declare identity file':
   path    => '/etc/ssh/ssh_config',
-  line    => 'PasswordAuthentication no',
+  line    => '    IdentityFile ~/.ssh/school',
   replace => true,
 }
