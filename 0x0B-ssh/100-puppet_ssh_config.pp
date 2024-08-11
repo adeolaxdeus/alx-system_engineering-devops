@@ -1,21 +1,19 @@
 # manifest to make changes to the configuration file
 
-$home_dir = $env['home']
-
-file { "${home_dir}/.ssh/config":
+file { '/etc/ssh/ssh_config':
   ensure  => 'file',
   mode    => '0744',
   content => ' ',
 }
 
 file_line { 'Declare identity file':
-  path  => "${home_dir}/.ssh/config",
+  path  => '/etc/ssh/ssh_config',
   line  => 'IdentifyFile ~/.ssh/school',
   match => '^IdentityFile',
 }
 
 file_line {'Turn off passwd Auth':
-  path  => "${home_dir}/.ssh/config",
+  path  => '/etc/ssh/ssh_config',
   line  => 'PasswordAuthentication no',
   match => '^PasswordAuthentication',
 }
