@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Get apache running in the container
+
+docker exec -it 29c6abd26383 /bin/bash
+service apache2 start
