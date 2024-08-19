@@ -5,4 +5,4 @@ apt-get update
 apt-get install -y nginx
 # configure the system so that When querying Nginx at its root / with a GET
 # request (requesting a page) using curl it returns "Hello world!".
-echo 'Hello world!' > /var/www/html/index.nginx-debian.html
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
