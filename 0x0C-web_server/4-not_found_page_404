@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Configure your Nginx server so that /redirect_me is redirecting to another
+# page.
+
+# install nginx
+apt-get  update
+apt-get install -y nginx
+
+# configure the system so that When querying Nginx at its root / with a GET
+# request (requesting a page) using curl it returns "Hello world!".
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+
+# configure the /redirect_me
+sed -i "/server_name _;/ a\\\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent; " /etc/nginx/sites-available/default
+# write the content of 404 custom page
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html
+# configure nginx to display the custom 404 page when there is a 404 error
+sed -i "/server_name _;/ a\\\terror_page 404 /custom_404.html; " /etc/nginx/sites-available/default
+# restart nginx
+service nginx restart
